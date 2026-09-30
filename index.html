@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+      /* BAGIAN 1 */
+      body {
+        background-color: antiquewhite;
+        color: rgb(90, 122, 21);
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3, h4, h5, .font-display {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
+        color: rgb(90, 122, 21);
+      }
+      html { scroll-behavior: smooth;}
+
+        .bg-hijau{
+            background-color: rgba(205, 214, 169, 0.8);
+        }
+        .nav-link{
+            color:rgb(90, 122, 21) !important;
+        }
+
+        .nav-item > .nav-link:hover,
+        .active{
+          border-bottom: 2px solid rgba(125, 142, 88) !important;
+          color: rgb(90, 122, 21) !important;
+        }
+        /* BAGIAN 2 */
+        #main-content {
+          background-color: rgba(252, 238, 227);
+        }
+        .text-content h1 {
+          font-size: 3rem;
+          line-height: 1.12;
+        }
+
+        @media (max-width: 768px) {
+          .text-content h1 {font-size: 2rem;}
+        }
+
+        .hero-section {
+          position: relative;
+          overflow: hidden;
+          padding: 4rem 0 5rem;
+        }
+
+        /*  MASKOT ANIMASI */
+        @keyframes floatmaskot {
+          0%, 100% { transform: translate(0px) rotate(0deg); }
+          50% {transform: translateY(-10px) rotate(1.5deg); }
+        }
+        .animate-maskot {
+          animation: floatmaskot 4.5s ease-in-out infinite;
+        }
+
+        .hero-image-wrapper {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .hero-pod {
+          position: absolute;
+          inset: 1rem;
+          background: linear-gradient(180deg, #fceee3 0%, rgba(252, 238, 227) 60%, #f9b5a8 100%);
+          border-radius: 44px;
+          box-shadow: 0 14px 28px -6px rgba(252, 238, 227);
+          border: 4px solid #fceee3;
+          transform: rotate(2deg);
+        }
+
+        /* TRUST BAR */
+        .trust-bar {
+          padding: 2rem 0;
+          background-color: #cdd6a9cc;
+          border-top: 1px solid #f9b5a8;
+          border-bottom: #f9b5a8;
+        }
+        .trust-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          background-color: rgb(252, 238, 227);
+          color: #efa28e;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        /* KATEGORI */
+        .kategori-card {
+          background: #cdd6a9cc;
+          border: 1px solid #f9b5a8;
+          border-radius: 24px;
+          padding: 1.5rem;
+          text-align: center;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          height: 100%;
+        }
+        .kategori.card:hover {
+          box-shadow: 0 14px 28px -6px #f9b5a8;
+          transform: translateY(-3px);
+        }
+        .kategori-icon {
+          width: 64px;
+          height: 64px;
+          margin: 0 auto 1rem;
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.75rem;
+          background-color: rgb(252, 238, 227);
+          color: #efa28e;
+          transition: transform 0.3s ease;
+        }
+
+        /* BEST SELLER */
+        .bestseller-section {
+          padding: 4rem 0;
+          background-color: rgb(252, 238, 227);
+          border-top: 1px solid #f9b5a8;
+          border-bottom: 1px solid #efa28e;
+        }
+        .product-card {
+          background-color: #cdd6a9cc;
+          border: 1px solid #efa28e;
+          border-radius: 30px;
+          padding: 1.25rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
+          transition: all 0.3s ease;
+        }
+        .product-card:hover {
+          box-shadow: 0 14px 28px -6px rgb(239, 162, 142);
+        }
+        .product-img-wrap {
+          position: relative;
+          height: 220px;
+          background-color: #fceee3;
+          border: 1px solid #fceee3;
+          border-radius: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .product-img-wrap.choco { background-color: rgb(252, 238, 227);}
+        .product-tag {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          background-color: #fceee3;
+          padding: 0.25rem 0.75rem;
+          border-radius: 999px;
+          font-size: 11px;
+          font-weight: 700;
+          color: #efa28e;
+          border: 1px solid #f9b5a8;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        .product-tag-green .dot { background-color: #f9b5a8; }
+        .product-icon {
+          width: 200px;
+          height: 200px;
+          transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-icon { transform: scale(1.05);}
+
+        .product-footer {
+          margin-top: 1.5rem;
+          padding-top: 1rem;
+          border-top: 1px solid #efa28e;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        /* TENTANG */
+        .tentang-section {
+          padding: 4rem 0;
+        }
+        .tentang-card {
+          background-color: #cdd6a9cc;
+          border: 1px solid #f9b5a8;
+          border-radius: 36px;
+          padding: 3rem 2rem;
+          box-shadow: 0 14px 28px -6px rgb(249, 181, 168);
+        }
+        .mascot-badge-circle {
+          width: 192px;
+          height: 192px;
+          margin: 0 auto;
+          background: #fceee3;
+          border: 4px solid #f9b5a8;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+
+        /* TESTIMONI */
+        .testimoni-section {
+          padding: 4rem 0;
+          background-color: #fceee3;
+          border-top: 1px solid #f9b5a8;
+          border-bottom: 1px solid #f9b5a8;
+        }
+        .testi-card {
+          background-color: #dad2cd;
+          border: 1px solid #f9b5a8;
+          border-radius: 24px;
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
+        }
+        .testi-avatar {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Quicksand', sans-serif;
+          font-size: 12px;
+          background-color: #fceee3;
+          color: red;
+        }
+        .testi-avatar img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 100px;
+        }
+        .testi-avatar.cream{
+          background-color: #fceee3;
+          color: black;
+        }
+
+        /* GALERI */
+        .galeri-section {
+        padding: 4rem 0;
+      }
+      .galeri-box {
+        aspect-ratio: 1 / 1;
+        border-radius: 16px;
+        border: 1px solid #f9b5a8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #fceee3;
+      }
+      .galeri-box:hover {
+        opacity: 0.9;
+      }
+      .galeri-1 {
+        background: linear-gradient(rgba(211, 189, 189, 0.171), rgba(0,0,0,0.281)),
+        url('gambar/galeri-1.jpeg');
+        background-size: cover;
+      }
+      .galeri-2 {
+        background: linear-gradient(rgba(255, 255, 255, 0.171), rgba(0,0,0,0.281)),
+        url('gambar/galeri-2.jpeg');
+        background-size: cover;
+      }
+      .galeri-3 {
+        background: linear-gradient(rgba(255, 255, 255, 0.171), rgba(0,0,0,0.281)),
+        url('gambar/galeri-3.jpeg');
+        background-size: cover;
+      }
+      .galeri-4 {
+        background: linear-gradient(rgba(255, 255, 255, 0.171), rgba(0,0,0,0.281)),
+        url('gambar/galeri-4.jpeg');
+        background-size: cover;
+      }
+
+      /* CTA */
+      .cta-section {padding: 4rem 0;}
+      .cta-box {
+        background: linear-gradient(90deg, #cdd6a9cc 0%, #cdd6a9cc 100%);
+        border-radius: 36px;
+        padding: 3rem 2rem;
+        color: #fff;
+        box-shadow: 0 14px 28px -6px rgba(216, 67, 96, 0.12);
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-box::after {
+        content: '';
+        position: absolute;
+        bottom: -40px;
+        right: -40px;
+        width: 256px;
+        height: 256px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        filter: blur(40px);
+        pointer-events: none;
+      }
+
+      /* FOOTER */
+      .footer-tntyna {
+      background-color: #fff;
+      border-top: 1px solid #F2CED6;
+      padding: 4rem 0 3rem;
+      }
+      .footer-tntyna h4 {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      }
+      .footer-tntyna a {
+      color: #73575C;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s ease;
+      }
+      .footer-tntyna a:hover { color: #D84360; }
+      .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background-color: #FFF8F0;
+      border: 1px solid #F2CED6;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #2C1A1D;
+      transition: color 0.2s ease;
+      }
+      .social-btn:hover { color: #D84360; }
+    </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-hijau sticky-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="gambar/logo2-transparan.png" alt="" width="60" height="60">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Produk</a>
+              </li>
+              <li class="nav-item">
+               <a href="#" class="nav-link">Kategori</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Promo</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Tentang Kami</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Akun</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav gap-3">
+              <li class="nav-item">
+                <a href="#" class="btn btn-light position-relative rounded-pill">
+                  <i class="bi bi-bag-heart"></i>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-success">
+                    <span class="visually-hidden">Keranjang Kosong</span>
+                    99+
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="btn btn-success">Pesan Sekarang</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+  <section id="home" class="hero-section">
+    <div class="container position-relative" style="z-index: 1;">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 text-content text-center text-lg-start">
+          <h1 class="mb-3">Percantik Gayamu dengan LumiLace✨
+          </h1>
+          <p class="text-secondary mb-4 mx-auto mx-lg-0" style="max-width: 36rem; color: rgb(90, 122, 21) !important;">LumiLace hadir untuk menemani setiap momen dengan koleksi aksesoris yang cute, manis, dan stylish. Temukan berbagai pilihan aksesoris yang dapat membuat penampilanmu semakin menarik dan menunjukkan gaya unikmu. Karena setiap detail kecil bisa membuat penampilan terasa lebih istimewa.💚✨
+          </p>
+          <div class="action d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+            <a href="#" class="btn btn-success fw-bold px-4 py-3 rounded-4 d-inline-flex align-items-center justify-content-center gap-2">Belanja Sekarang</a>
+            <a href="#" class="btn btn-light fw-bold px-4 py-3 rounded-4 border">Lihat Koleksi</a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="hero-image-wrapper">
+            <div class="hero-pod"></div>
+            <img 
+            src="gambar/hero-section-transparan.png" 
+            alt="Maskot Lumi" 
+            class="img-fluid position-relative animate-maskot" 
+            style="z-index: 1; max-width: 380px;"
+            />
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-md-3">
+          <div class="d-flex align-items-center justify-content-center gap-3">
+            <div class="trust-icon">
+              <i class="bi bi-grid"></i>
+            </div>
+            <div class="text-start">
+              <h4 class="h6 fw-bold mb-0">Koleksi Aksesoris Beragam</h4>
+              <p class="small text-secondary mb-0">Pilihan aksesoris untuk melengkapi berbagai gaya</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="d-flex align-items-center justify-content-center gap-3">
+            <div class="trust-icon">
+              <i class="bi bi-people"></i>
+            </div>
+            <div class="text-start">
+              <h4 class="h6 fw-bold mb-0">Cocok Untuk Semua Usia</h4>
+              <p class="small text-secondary mb-0">Pilihan aksesoris untuk anak hingga dewasa</p>
+            </div>
+          </div>
+        </div> 
+        <div class="col-6 col-md-3">
+          <div class="d-flex align-items-center justify-content-center gap-3">
+            <div class="trust-icon">
+              <i class="bi bi-stars"></i>
+            </div>
+            <div class="text-start">
+              <h4 class="h6 fw-bold mb-0">Gaya Cute Dan Stylish</h4>
+              <p class="small text-secondary mb-0">Lengkapi penampilan dengan sentuhan aksesoris manis</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="d-flex align-items-center justify-content-center gap-3">
+            <div class="trust-icon">
+              <i class="bi bi-heart"></i>
+            </div>
+            <div class="text-start">
+              <h4 class="h6 fw-bold mb-0">Temukan Aksesoris Favoritmu</h4>
+              <p class="small text-secondary mb-0">Beragam pilihan untuk mengekspresikan gaya pribadi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KATEGORI CONTENT -->
+  <section id="kategori" class="py-5">
+    <div class="container">
+      <div class="text-center mx-auto mb-5" style="max-width: 36rem;">
+        <span 
+          class="text-danger fw-bold text-uppercase small"
+          style="letter-spacing: 0.05em;"
+          >Koleksi LumiLace✨</span>
+          <h2 class="mt-1">Temukan Aksesoris Favoritmu</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="kategori-card">
+            <div class="kategori-icon">
+              <i class="bi bi-flower3"></i>
+            </div>
+            <h3 class="h6 mb-1">Aksesoris Rambut</h3>
+            <p class="small text-secondary mb-0">Jepit, Pita, dan aksesoris rambut cantik</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="kategori-card">
+            <div class="kategori-icon">
+              <i class="bi bi-heart-fill"></i>
+            </div>
+            <h3 class="h6 mb-1">Aksesoris Leher</h3>
+            <p class="small text-secondary mb-0">Kalung dan Charm untuk melengkapi penampilan</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="kategori-card">
+            <div class="kategori-icon">
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <h3 class="h6 mb-1">Aksesoris Tangan</h3>
+            <p class="small text-secondary mb-0">Gelang dan cincin untuk gaya sehari-hari</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="kategori-card">
+            <div class="kategori-icon">
+              <i class="bi bi-stars"></i>
+            </div>
+            <h3 class="h6 mb-1">Aksesoris Fashion</h3>
+            <p class="small text-secondary mb-0">Pilihan aksesoris untuk berbagi gaya</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SELLER -->
+  <section id="bestseller" class="bestseller-section">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
+        <div>
+          <span class="text-danger fw-bold text-uppercase small" style="letter-spacing: .05em;">Koleksi LumiLace✨</span>
+          <h2 class="mt-1">Aksesoris Plihan Untukmu</h2>
+        </div>
+        <p class="text-secondary small mb-0 mt-2 mt-md-0" style="max-width: 24rem;">
+          Temukan berbagai aksesoris cute dan stylish untuk melengkapi gaya sehari-harimu.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-6 col-lg-4">
+          <articel class="product-card">
+            <div>
+              <div class="product-img-wrap">
+                <div class="product-tag">
+                  <span class="dot"></span>
+                  <span>🛍️Best Seller</span>
+                </div>
+                <img src="gambar/jepit-transparan.png" alt="" class="product-icon">
+              </div>
+              <div class="mt-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span class="small fw-semibold text-secondary text-uppercase" style="letter-spacing: .05em;
+                  ">🎀Jepit Rambut Cute</span>
+                  <span class="small fw-bold text-warning"><i class="bi bi-star-fill "></i> 4.9</span>
+                </div>
+                <h3 class="h5 mt-2 mb-1">Aksesoris Rambut</h3>
+                <p class="small text-secondary mb-0">
+                  Jepit rambut cantik untuk menambahkan sentuhan manis pada penampilan. 
+                </p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div>
+                <span class="d-block" style="font-size: 11px; color: slategrey;">Cute Collection</span>
+                <span class="font-display fw-bold fs-5">30.000</span>
+              </div>
+              <button
+                onclick="handleAddToCart('Jepit Rambut Cute', 30.000)"
+                class="btn btn-danger btn-sm-fw-bold rounded-3 d-inline-flex align-items-center gap-2"
+              >
+              <i class="bi bi-plus"></i>Pesan
+              </button>
+            </div>
+          </articel>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-6 col-lg-4">
+          <articel class="product-card">
+            <div>
+              <div class="product-img-wrap">
+                <div class="product-tag">
+                  <span class="dot"></span>
+                  <span>🌷New Arrival</span>
+                </div>
+                <img src="gambar/kalung-transparan.png" alt="" class="product-icon">
+              </div>
+              <div class="mt-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span class="small fw-semibold text-secondary text-uppercase" style="letter-spacing: .05em;
+                  ">💎Kalung Charm</span>
+                  <span class="small fw-bold text-warning"><i class="bi bi-star-fill "></i> 4.9</span>
+                </div>
+                <h3 class="h5 mt-2 mb-1">Aksesoris Leher</h3>
+                <p class="small text-secondary mb-0">
+                  Kalung dengan charm cantik untuk melengkapi berbagai gaya.
+                </p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div>
+                <span class="d-block" style="font-size: 11px; color: slategrey;">Charm Collection</span>
+                <span class="font-display fw-bold fs-5">45.000</span>
+              </div>
+              <button
+              onclick="handleAddToCart('Kalung Charm', 45.000)"
+              class="btn btn-danger btn-sm-fw-bold rounded-3 d-inline-flex align-items-center gap-2"
+              >
+              <i class="bi bi-plus"></i>Pesan
+              </button>
+            </div>
+          </articel>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-6 col-lg-4">
+          <articel class="product-card">
+            <div>
+              <div class="product-img-wrap">
+                <div class="product-tag">
+                  <span class="dot"></span>
+                  <span>💖Paling Dicari</span>
+                </div>
+                <img src="gambar/tas-transparan.png" alt="" class="product-icon">
+              </div>
+              <div class="mt-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span class="small fw-semibold text-secondary text-uppercase" style="letter-spacing: .05em;
+                  ">👜handbag</span>
+                  <span class="small fw-bold text-warning"><i class="bi bi-star-fill "></i> 4.9</span>
+                </div>
+                <h3 class="h5 mt-2 mb-1">Aksesoris Fashion</h3>
+                <p class="small text-secondary mb-0">
+                  Pilihan tas cute dan stylish untuk berbagai gaya.
+                </p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div>
+                <span class="d-block" style="font-size: 11px; color: slategrey;">Fashion Collection</span>
+                <span class="font-display fw-bold fs-5">70.000</span>
+              </div>
+              <button
+              onclick="handleAddToCart('HandBag', 70.000)"
+              class="btn btn-danger btn-sm-fw-bold rounded-3 d-inline-flex align-items-center gap-2"
+              >
+              <i class="bi bi-plus"></i>Pesan
+              </button>
+            </div>
+          </articel>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+  <section id="tentang" class="tentang-section">
+    <div class="container">
+      <div class="tentang-card">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5 text-center">
+            <div class="mascot-badge-circle">
+              <img src="gambar/mascot-transparan.png" alt="">
+            </div>
+            <h3 class="h5 mt-4"> Tentang LumiLace✨</h3>
+            <p class="small text-secondary mb-0">
+             Beragam aksesoris cute untuk melengkapi gaya dan penampilan sehari-hari.
+            </p>
+          </div>
+
+          <div class="col-lg-7">
+            <span
+             class="text-danger fw-bold text-uppercase small" 
+             style="letter-spacing: 0.05em;"
+             ></span
+             >
+             <h2 class="mt-2">
+              Lengkapi gaya dengan sentuhan manis.
+             </h2>
+             <p class="text-secondary">
+              LumiLace adalah toko aksesoris yang menyediakan berbagai 
+              pilihan aksesoris cute dan stylish untuk semua umur. 
+              Mulai dari aksesoris rambut, kalung, gelang, hingga aksesoris fashion, 
+              setiap koleksi dirancang untuk membantu melengkapi penampilan dan 
+              mengekspresikan gaya pribadi dengan sentuhan manis.
+             </p>
+             <div class="row g-3 pt-2">
+              <div class="col-sm-6">
+                <div 
+                class="bg-white rounded-3 border p-3 small fw-semibold d-flex align-items-center gap-2" 
+                style="border-color: #f9b5a8 !important"
+                >
+                <span
+                 class="d-inline-block rounded-circle bg-danger"
+                 style="width: 8px; height: 8px;"
+                 ></span>
+                  Beragam Pilihan Aksesoris.
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div
+                 class="bg-white rounded-3 border p-3 small fw-semibold d-flex align-items-center gap-2"
+                 style="border-color: #f9b5a8 !important"
+                 >
+                 <span class="d-inline-block rounded-circle bg-danger"
+                 style="width: 8px; height: 8px;"
+                 ></span>
+                  Cute dan Stylish.
+                </div>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section id="testimoni" class="testimoni-section">
+    <div class="container">
+      <div class="text-center mx-auto mb-5" style="max-width: 36rem;">
+        <span class="text-danger fw-bold text-uppercase small" style="letter-spacing: .05em;">Kata Pelanggan</span>
+        <h2 class="mt-1">Ulasan Pelanggan Setia</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="testi-card">
+            <div>
+              <div class="text-warning mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="small mb-0">"Jepit rambutnya lucu banget! Desainnya manis dan gampang dipadukan dengan berbagai outfit sehari-hari"</p>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-4 pt-3 bprder-top">
+              <div class="testi-avatar cream"> <img src="gambar/foto-2.jpeg" alt=""> </div>
+              <div>
+                <h4 class="h6 mb-0">Aulia Nabila</h4>
+                <span class="small text-secondary">Medan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="testi-card">
+            <div>
+              <div class="text-warning mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="small mb-0">"Aku suka banget sama kalung charm dari LumiLace.Modelnya cute dan cocok dipakai untuk berbagai acara" </p>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-4 pt-3 border-top">
+              <div class="testi-avatar cream"><img src="gambar/foto-3.jpeg" alt=""></div>
+              <div>
+                <h4 class="h6 mb-0">Dinda Putri</h4>
+                <span class="small text-secondary">Bandung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="testi-card">
+            <div>
+              <div class="text-warning mb-2">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="small mb-0">"Pilihan aksesorisnya beragam dan desainya gemas. handbag nya juga mudah dipadukan dengan outfit sehari-hari"</p>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-4 pt-3 border-top">
+              <div class="testi-avatar cream"><img src="gambar/foto-4.jpeg" alt=""></div>
+              <div>
+                <h4 class="h6 mb-0">Salsabila Rahma</h4>
+                <span class="small text-secondary">Surabaya</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section class="galeri-section">
+    <div class="container text-center">
+      <span
+      class="text-danger fw-bold text-uppercase small" 
+      style="letter-spacing: 0.05em;"
+      >LumiLace✨</span
+      >
+      <h2 class="mt-1 mb-4">Galeri LumiLace✨</h2>
+
+      <div class="row g-3">
+        <div class="col-6 col-md-3">
+          <div class="galeri-box galeri-1">#Hair Aksesoris</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="galeri-box galeri-2">#Lovely LumiLace</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="galeri-box galeri-3">#Charm And Bracelet</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="galeri-box galeri-4">#Cute HandBag</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="row align-items-center g-4 position-relative" style="z-index: 1;">
+          <div class="col-md-8 text-center text-md-start">
+            <h2 class="text-success mb-2">Bawa Pulang Aksesoris Untuk Gaya Manismu</h2>
+            <p class="text-secondary -50 mb-0">
+              Pesan sebelum jam 15.00 WIB untuk pengiriman hari ini dengan kemasan yang bagus.
+            </p>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+            <a href="#bestseller" class="btn btn-light fw-bold text-success px-4 py-3 rounded-4">
+              Lihat Koleksi
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-LumiLace">
+    <div class="container">
+      <div class="row g-4 pb-4 border-bottom" style="border-color: rgb(239, 162, 142) !important;">
+        <div class="col-md-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="gambar/logo2-transparan.png" alt="" width="48" class="me-2">
+            <span class="font-display fs-4 fw-bold">LumiLace✨<span class="text-danger"></span></span>
+          </div>
+          <p class="small text-secondary mb-2">
+            Toko aksesoris dengan koleksi cute dan stylish untuk melengkapi berbagai gaya sehari-hari.
+          </p>
+          <p class="small fw-semibold mb-0">Jam Operasional: 08.00-20.00 WIB</p>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <h4>Navigasi</h4>
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#ketegori">Ketegori</a></li>
+            <li><a href="#bestseller">Produk Unggulan</a></li>
+            <li><a href="#tentang">Tentang LumiLace</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h4>Layanan Konsumen</h4>
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+            <li><a href="#">Koleksi Aksesoris</a></li>
+            <li><a href="#">Panduan Produk</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Syarat&Ketentuan</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3">
+          <h4>Hubungi Kami</h4>
+          <p class="small text-secondary mb-3">
+            Jl. Melati Indah No. 18, Medan, Sumatera Utara
+          </p>
+          <div class="d-flex align-items-center gap-2">
+            <a href="#" class="social-btn" aria-label="Instagram LumiLace✨">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="whatsapp pemesanan">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="gmail">
+              <i class="bi bi-envelope-at-fill"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="tiktok">
+              <i class="bi bi-tiktok"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 d-flex flex-column flex-sm-row justify-content-between align-items-center small text-secondary gap-2">
+        <p class="mb-0">© 2026 LumiLace. Seluruh hak cipta dilindungi undang-undang</p>
+        <p class="mb-0">Dibuat dengan sentuhan manis untuk melengkapi gaya Anda.</p>
+      </div>
+    </div>
+  </footer>
+
+
+</main>
+
+
+<!-- tr = table row (table baris) -->
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
